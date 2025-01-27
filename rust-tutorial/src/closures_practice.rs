@@ -8,6 +8,7 @@ fn apply<F>(f: F) where
     f();
 }
 
+
 // A function which takes a closure and returns an `i32`.
 fn apply_to_3<F>(f: F) -> i32 where
     // The closure takes an `i32` and returns an `i32`.

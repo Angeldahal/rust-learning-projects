@@ -1,16 +1,16 @@
 fn main() {
-    let logical: bool = true;
+    let _logical: bool = true;
 
-    let a_float: f64 = 1.0;
+    let _a_float: f64 = 1.0;
     let an_integer = 5i32;
     
     println!("An integer: {}", an_integer);
 
-    let default_float = 3.0; // 'f64'
-    let default_integer = 7; // 'i32'
+    let _default_float = 3.0; // 'f64'
+    let _default_integer = 7; // 'i32'
     
-    let mut inferred_type = 12; // mut = mutable 
-    inferred_type = 482974;
+    let mut _inferred_type = 12; // mut = mutable 
+    _inferred_type = 482974;
 
     let mut mutable = 12;
     mutable = 123;
