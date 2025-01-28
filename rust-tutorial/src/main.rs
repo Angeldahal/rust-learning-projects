@@ -8,6 +8,8 @@ mod primitive_ds;
 mod struct_ex;
 mod tuple_ops;
 mod type_conv;
+mod modules_ex;
+
 fn main(){
     println!("Hello World");
 }

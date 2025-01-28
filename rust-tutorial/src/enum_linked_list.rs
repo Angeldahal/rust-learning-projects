@@ -7,7 +7,7 @@ enum List {
 
 impl List {
     fn new() -> List {
-        Nil
+        Self::Nil
     }
 
     fn prepend(self, elem: u32) -> List {
@@ -17,9 +17,9 @@ impl List {
     fn len(&self) -> u32 {
         match *self {
             Cons(_, ref tail ) => {
-               1 + tail.len()
+                1 + tail.len()
             },
-            Nil => {
+            Self::Nil => {
                 0
             }
         }
@@ -30,7 +30,7 @@ impl List {
             Cons(head, ref tail) => {
                 format!("{}, {}", head, tail.stringify())
             },
-            Nil => {
+            Self::Nil => {
                 format!("Nil")
             },
         }
@@ -43,7 +43,7 @@ fn main() {
     list = list.prepend(1);
     list = list.prepend(2);
     list = list.prepend(3);
-    
+
     println!("linked list has length: {}", list.len());
     println!("{}", list.stringify());
 }
