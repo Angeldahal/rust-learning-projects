@@ -9,6 +9,7 @@ mod struct_ex;
 mod tuple_ops;
 mod type_conv;
 mod modules_ex;
+mod largest_num;
 
 fn main(){
     println!("Hello World");
