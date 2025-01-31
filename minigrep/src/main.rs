@@ -6,14 +6,14 @@ fn main() {
     let args: Vec<String> = env::args().collect();
 
     let config = Config::build(&args).unwrap_or_else(|err| {
-        println!("Problem parsing arguments: {err}");
+        eprintln!("Problem parsing arguments: {err}");
         process::exit(1);
     }); 
     println!("Searching for {0}", config.query);
     println!("In file {0}", config.file_path);
     
     if let Err(e) = minigrep::run(config) {
-        println!("Applicaiton Error, {e}");
+        eprintln!("Applicaiton Error, {e}");
         process::exit(1);
     } 
 }
