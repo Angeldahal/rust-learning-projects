@@ -10,6 +10,7 @@ mod tuple_ops;
 mod type_conv;
 mod modules_ex;
 mod largest_num;
+mod concurrency_ex;
 
 fn main(){
     println!("Hello World");
