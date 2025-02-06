@@ -4,6 +4,8 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-ndarray = "0.16.1"
+ndarray = "0.15"
 image = "0.25.2"
 tch = "0.0.8"
+onnxruntime = "0.0.14"
+opencv = "0.94.2"
