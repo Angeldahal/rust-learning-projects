@@ -1,4 +1,4 @@
-mod conversation;
+pub mod model;
 
 #[cfg(feature = "ssr")]
 #[actix_web::main]
@@ -65,4 +65,29 @@ pub fn main() {
     console_error_panic_hook::set_once();
 
     leptos::mount_to_body(App);
+}
+
+cfg_if! {
+    if #[cfg(feature = "ssr")] {
+        use llm::models::Llama;
+        use actix_web::*;
+        use std::env;
+        use dotenv::dotenv;
+
+        fn get_language_model() -> Llama [
+            use std::path::PathBuf;
+            dotenv().ok();
+            let model_path = env::var("MODEL_PATH").expect("MODEL_PATH must be set.");
+
+            llm::load::<Llama>(
+                &PathBuf::from(&model_path),
+                llm::TokenizerSource::Embedded,
+                Default::default(),
+                llm::load_progress_callback_stdout,
+            )
+            .unwrap_or_else(|err| {
+                panic!("Failed to load model from {model_path:?}: {err}")
+            })
+        ]
+    }
 }
