@@ -2,10 +2,11 @@ use std::fs::File;
 use std::io::{self, BufRead};
 use std::path::Path;
 use regex::Regex;
+use colored::Colorize;
 
-pub fn run(pattern: String, filename: String) {
-    if let Err(e) = search(&pattern, &filename) {
-        eprintln!("Error: {}", e);
+pub fn run(pattern: String, filename: String, case_insensitive: bool, regex: bool, whole_word: bool) {
+    if let Err(e) = search(&pattern, &filename, case_insensitive, regex, whole_word) {
+        eprintln!("{}: {}", "Error".red(), e);
     }
 }
 
@@ -43,7 +44,8 @@ fn search(pattern: &str, filename: &str, case_insensitive: bool, regex: bool, wh
         };
 
         if is_match {
-            println!("{}: {}", line_number + 1, line);
+            let highlighted = line.replace(&pattern, &pattern.yellow().to_string());
+            println!("{}: {}", (line_number + 1).to_string().blue(), highlighted);
         }
     }
 

@@ -24,7 +24,7 @@ pub enum Commands {
     Grep { 
         pattern: String, 
         filename: String,
-        #[arg(short, long)] case_insensitive: bool,
+        #[arg(short = 'i', long)] case_insensitive: bool,
         #[arg(short = 'r', long)] regex: bool,
         #[arg(short = 'w', long)] whole_word: bool
     },

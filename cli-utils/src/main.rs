@@ -24,8 +24,8 @@ fn main() {
             find::run(path, name);
         },
 
-        Commands::Grep { pattern, filename } => {
-            grep::run(pattern, filename)
+        Commands::Grep { pattern, filename, case_insensitive, regex, whole_word } => {
+            grep::run(pattern, filename, case_insensitive, regex, whole_word)
         },
     }
 }

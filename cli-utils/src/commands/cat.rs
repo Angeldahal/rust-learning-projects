@@ -1,9 +1,23 @@
-use std::fs;
-use std::io::{self, Read};
+use std::fs::File;
+use std::io::{self, BufRead};
+use std::path::Path;
+use colored::Colorize;
 
 pub fn run(filename: String) {
-    match fs::read_to_string(&filename) {
-        Ok(contents) => print!("{}", contents),
-        Err(_) => eprintln!("Error: Could not read file '{}", filename),
+    if let Err(e) = read_file(&filename) {
+        eprint!("{}: {}", "Error".red(), e);
     }
+}
+
+fn read_file(filename: &str) -> Result<(), io::Error> {
+    let path = Path::new(filename);
+    let file = File::open(path)?;
+
+    let reader = io::BufReader::new(file);
+
+    for line in reader.lines() {
+        println!("{}", line?);
+    }
+
+    Ok(())
 }

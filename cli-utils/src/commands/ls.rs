@@ -1,15 +1,28 @@
 use std::fs;
 use std::path::Path;
+use colored::Colorize;
 
 pub fn run(path: Option<String>) {
-    let dir = path.unwrap_or_else(|| ".".to_string());
-
-    match fs::read_dir(Path::new(&dir)) {
-        Ok(entries) => {
-            for entry in entries.flatten() {
-                println!("{}", entry.file_name().to_string_lossy());
-            }
-        }
-        Err(_) => eprintln!("Error: Could not access '{}'", dir),
+    let dir_path = path.unwrap_or_else(|| ".".to_string());
+    if let Err(e) = list_files(&dir_path) {
+        eprintln!("{}: {}", "Error".red(), e);
     }
+}
+
+fn list_files(path: &str) -> Result<(), std::io::Error> {
+    let entries = fs::read_dir(Path::new(path))?;
+
+    for entry in entries {
+        let entry = entry?;
+        let file_name = entry.file_name();
+        let file_name = file_name.to_string_lossy();
+
+        if entry.path().is_dir() {
+            println!("{}", file_name.blue());
+        } else {
+            println!("{}", file_name);
+        }
+    }
+
+    Ok(())
 }
