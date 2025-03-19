@@ -3,6 +3,7 @@ use std::io::{self, BufRead};
 use std::path::Path;
 use regex::Regex;
 use colored::Colorize;
+use rayon::prelude::*;
 
 pub fn run(pattern: String, filename: String, case_insensitive: bool, regex: bool, whole_word: bool) {
     if let Err(e) = search(&pattern, &filename, case_insensitive, regex, whole_word) {
@@ -29,25 +30,28 @@ fn search(pattern: &str, filename: &str, case_insensitive: bool, regex: bool, wh
         None
     };
 
-    for (line_number, line) in reader.lines().enumerate() {
-        let line = line?;
-        let line_to_match = if case_insensitive {
-            line.to_lowercase()
-        } else {
-            line.clone()
-        };
+    reader
+        .lines()
+        .enumerate()
+        .par_bridge()
+        .filter_map(|(line_number, line)| line.ok().map(|l| (line_number, l)))
+        .filter(|(_, line)| {
+            let line_to_match = if case_insensitive {
+                line.to_lowercase()
+            } else {
+                line.clone()
+            };
 
-        let is_match = if let Some(re) = &re {
-            re.is_match(&line_to_match)
-        } else {
-            line_to_match.contains(&pattern)
-        };
-
-        if is_match {
-            let highlighted = line.replace(&pattern, &pattern.yellow().to_string());
+            if let Some(re) = &re {
+                re.is_match(&line_to_match)
+            } else {
+                line_to_match.contains(&pattern)
+            }
+        })
+        .for_each(|(line_number, line)| {
+            let highlighted = line.replace(pattern.as_str(), &pattern.yellow().to_string());
             println!("{}: {}", (line_number + 1).to_string().blue(), highlighted);
-        }
-    }
+        });
 
     Ok(())
 }
