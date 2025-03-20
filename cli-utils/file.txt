@@ -1,7 +1,32 @@
-A blog (a truncation of "weblog")[1] is an informational website consisting of discrete, often informal diary-style text entries (posts). Posts are typically displayed in reverse chronological order so that the most recent post appears first, at the top of the web page. In the 2000s, blogs were often the work of a single individual, occasionally of a small group, and often covered a single subject or topic. In the 2010s, "multi-author blogs" (MABs) emerged, featuring the writing of multiple authors and sometimes professionally edited. MABs from newspapers, other media outlets, universities, think tanks, advocacy groups, and similar institutions account for an increasing quantity of blog traffic. The rise of Twitter and other "microblogging" systems helps integrate MABs and single-author blogs into the news media. Blog can also be used as a verb, meaning to maintain or add content to a blog.
+INFO 2025-03-19 12:34:56 Server started on port 8080
+DEBUG 2025-03-19 12:35:00 Connection established with client 192.168.1.10
+ERROR 2025-03-19 12:35:05 Failed to load module 'network_driver'
+WARN 2025-03-19 12:35:10 High memory usage detected: 85%
+INFO 2025-03-19 12:35:15 User login successful: user_id=12345
 
-The emergence and growth of blogs in 
-the late 1990s coincided with the advent of web publishing tools 
-that facilitated the posting of content by non-technical users 
-who did not have much experience with HTML or computer programming. 
-Previously, knowledge of such technologies as HTML and File Transfer Protocol had been required to publish content on the Web, and early Web users therefore tended to be hackers and computer enthusiasts. As of the 2010s, the majority are interactive Web 2.0 websites, allowing visitors to leave online comments, and it is this interactivity that distinguishes them from other static websites.[2] In that sense, blogging can be seen as a form of social networking service. Indeed, bloggers not only produce content to post on their blogs but also often build social relations with their readers and other bloggers.[3] Blog owners or authors often moderate and filter online comments to remove hate speech or other offensive content. There are also high-readership blogs which do not allow comments.
+The quick brown fox jumps over the lazy dog.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+This is a sample text file for performance testing.
+Pattern matching can be optimized using indexing techniques.
+
+Product List:
+- Apple iPhone 15, Price: $999
+- Samsung Galaxy S24, Price: $899
+- Google Pixel 8, Price: $799
+- OnePlus 12, Price: $749
+
+Transaction Logs:
+TXN12345: User ID 5678 purchased item 8910 at 2025-03-19 14:00:00
+TXN12346: User ID 6789 refunded item 2345 at 2025-03-19 14:05:00
+TXN12347: User ID 7890 purchased item 4567 at 2025-03-19 14:10:00
+
+Random Alphanumeric Data:
+A1B2C3D4E5F6G7H8I9J0
+X1Y2Z3W4V5U6T7S8R9Q0
+9876543210abcdefABCDEF
+
+Repeating pattern text to test regex matching:
+ERROR ERROR ERROR WARNING WARNING INFO DEBUG ERROR
+Lorem Lorem Lorem Ipsum Ipsum Ipsum Dolor Sit Sit Sit Amet Amet Amet
+
+EOF
